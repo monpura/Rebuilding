@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Eloquent Convention
+use App\Post;
+// Direct DB call
+use DB;
 
 class PostsController extends Controller
 {
@@ -13,7 +17,18 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        /**
+           Will print only one post
+           $posts = Post::all();
+           Will print specific post
+           return $posts = Post::where('title', 'Post Two')->get();
+           Direct DB call 
+           $posts = DB::select('SELECT * FROM posts');
+           Note: Post:: Eloquent Convention and DB:: DB Convention
+        **/   
+
+        $posts = Post::orderBy('title', 'desc')->paginate(10);           
+        return view('posts.index')-> with('posts', $posts);
     }
 
     /**
@@ -45,7 +60,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.show')->with('post', $post);
     }
 
     /**
