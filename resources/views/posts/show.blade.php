@@ -4,7 +4,7 @@
 	<a class="btn btn-default" href="/posts">Go Back</a>
     <h1>{{ $post->title }}</h1>
     <div>
-    	{{ $post->body }}
+    	{!! $post->body !!}
     </div>
 	<small>Written on {{ $post->created_at }}</small>
 @endsection
