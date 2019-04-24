@@ -16,7 +16,7 @@
                     <a class="btn btn-primary" href="/posts/create">Create Post</a>
                     <h3>Your Blog Posts</h3>
                     @if(count($posts) > 0)
-                        <table>
+                        <table class="table table-striped">
                             <tr>
                                 <th>Title</th>
                                 <th></th>
