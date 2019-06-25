@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2019 at 09:33 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jun 25, 2019 at 08:53 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_04_09_131036_create_posts_table', 1),
 (4, '2019_04_24_091913_add_user_id_to_posts', 2),
-(5, '2019_04_25_074247_add_cover_image_to_posts', 3);
+(5, '2019_04_25_074247_add_cover_image_to_posts', 3),
+(6, '2019_06_25_173647_create_product_lists_table', 4);
 
 -- --------------------------------------------------------
 
@@ -80,6 +81,27 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `title`, `body`, `created_at`, `updated_at`, `user_id`, `cover_image`) VALUES
 (14, 'Post One', '<p>This is post one</p>', '2019-04-25 05:29:47', '2019-04-25 05:29:47', 1, 'noimage.jpg'),
 (16, 'Post Five', '<p>Tetw</p>', '2019-04-26 04:53:34', '2019-04-26 04:53:34', 1, 'noimage.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_lists`
+--
+
+CREATE TABLE `product_lists` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `product_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_number` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_id` int(11) NOT NULL,
+  `barcode` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sale_price` double(10,10) NOT NULL,
+  `print_quantity` int(11) NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -129,6 +151,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_lists`
+--
+ALTER TABLE `product_lists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -143,13 +171,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `product_lists`
+--
+ALTER TABLE `product_lists`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
