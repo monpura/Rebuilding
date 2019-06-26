@@ -25,7 +25,7 @@ class ProductListsController extends Controller
      */
     public function create()
     {
-        //
+        return view('product_lists.create');
     }
 
     /**
@@ -36,7 +36,25 @@ class ProductListsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // From validation
+        $this->validate($request, [
+            'product_name' => 'required',
+            'product_number' => 'required'
+        ]);
+
+        // Create Product
+        $product = new ProductList;
+        $product->category_id = $request->input('category_id');
+        $product->product_name = $request->input('product_name');
+        $product->product_number = $request->input('product_number');
+        $product->party_id = $request->input('party_id');
+        $product->barcode = $request->input('barcode');
+        $product->sale_price = $request->input('sale_price');
+        $product->print_quantity = $request->input('print_quantity');
+        $product->published = $request->input('published');
+        $product->save();
+
+        return redirect('/product_lists')->with('sucess', 'Product Added');
     }
 
     /**
