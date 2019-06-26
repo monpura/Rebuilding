@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2019 at 08:53 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Jun 26, 2019 at 04:31 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -95,13 +95,23 @@ CREATE TABLE `product_lists` (
   `product_number` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `party_id` int(11) NOT NULL,
   `barcode` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sale_price` double(10,10) NOT NULL,
+  `sale_price` double NOT NULL,
   `print_quantity` int(11) NOT NULL,
   `published` tinyint(4) NOT NULL,
-  `deleted` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_lists`
+--
+
+INSERT INTO `product_lists` (`id`, `category_id`, `product_name`, `product_number`, `party_id`, `barcode`, `sale_price`, `print_quantity`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Product Name', 'Product Number', 1, 'Barcode', 12, 2, 1, NULL, '2019-06-26 07:50:49', '2019-06-26 07:50:49'),
+(2, 1, 'Product Name', 'Product Number', 1, 'Barcode', 23, 12, 1, NULL, '2019-06-26 07:51:10', '2019-06-26 07:51:10'),
+(3, 3, 'Product NameTest', 'Product Number Test', 3, 'Barcode', 200, 12, 2, NULL, '2019-06-26 07:52:08', '2019-06-26 07:52:08'),
+(4, 3, 'Product NameTest1', 'Product Number1', 2, 'BarcodeBarcode', 12, 1, 1, NULL, '2019-06-26 08:00:35', '2019-06-26 08:00:35');
 
 -- --------------------------------------------------------
 
@@ -183,7 +193,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `product_lists`
 --
 ALTER TABLE `product_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
