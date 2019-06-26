@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\ProductList;
+
 class ProductListsController extends Controller
 {
     /**
