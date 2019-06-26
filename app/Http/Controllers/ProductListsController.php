@@ -15,7 +15,9 @@ class ProductListsController extends Controller
      */
     public function index()
     {
-        //
+        $products = ProductList::all();
+
+        return view('product_lists.index')->with('products', $products);
     }
 
     /**
@@ -65,7 +67,9 @@ class ProductListsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = ProductList::find($id);
+
+        return view('product_lists.show')->with('product', $product);
     }
 
     /**
