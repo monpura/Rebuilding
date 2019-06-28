@@ -43,7 +43,8 @@
         </div>                 
         <div class="form-group">
             {{ Form::label('published', 'Published') }}
-            {{ Form::checkbox('published', '1')  }}
+            {{ Form::hidden('published', 0) }}
+            {{ Form::checkbox('published', 1) }}
         </div>
           {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}

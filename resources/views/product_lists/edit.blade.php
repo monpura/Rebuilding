@@ -5,7 +5,12 @@
     {{ Form::open(['action' => ['ProductListsController@update', $product->id], 'method' => 'PSOT', 'enctype' => 'multipart/form-data']) }}
         <div class="form-group">
             {{ Form::label('category_id', 'Category ID') }}
-            {{ Form::select('category_id', [$product->category_id, 0, 1, 2]) }}
+            {{ Form::select('category_id', array(
+                $product->category_id => $product->category_id,
+                0 => 'Ctg1',
+                1 => 'Ctg2',
+                2 => 'Ctg3',
+                )) }}
         </div>
         <div class="form-group">
             {{ Form::label('product_name', 'Product Name') }}
@@ -17,7 +22,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('party_id', 'Party ID') }}
-            {{ Form::select('party_id', [$product->party_id, 0, 1, 2]) }}
+            {{ Form::select('party_id', array(
+                $product->party_id => $product->party_id,
+                0 => 'Party1',
+                1 => 'Party2',
+                2 => 'Party3',
+                )) }}
         </div>
         <div class="form-group">
             {{ Form::label('barcode', 'Barcode') }}
@@ -32,15 +42,16 @@
             {{ Form::number('print_quantity', $product->print_quantity, ['class' => 'form-control', 'placeholder' => 'Print Quantity']) }}
         </div>                 
         <div class="form-group">
-                    
-            @if($product->published == 1)
-                Yes
-            @else
-                No
-            @endif
-
             {{ Form::label('published', 'Published') }}
-            {{ Form::select('published', [$product->published, 'Yes', 'No']) }}
+            <!--{{ Form::checkbox('published', $product->published)  }}-->
+            @if($product->published == 1)
+                {{ Form::checkbox('published', $product->published, old('published', true)) }}
+                {{ Form::hidden('published', 0) }}
+                {{ Form::hidden('published', 1) }}
+            @else
+                {{ Form::hidden('published', 0) }}
+                {{ Form::checkbox('published', 1) }}         
+            @endif
         </div>
         {{ Form::hidden('_method', 'PUT') }}
         {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}

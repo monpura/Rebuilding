@@ -39,8 +39,13 @@ class ProductListsController extends Controller
     {
         // From validation
         $this->validate($request, [
+            'category_id' => 'required',
             'product_name' => 'required',
-            'product_number' => 'required'
+            'product_number' => 'required',
+            'party_id' => 'required',
+            'barcode' => 'required',
+            'sale_price' => 'required',
+            'print_quantity' => 'required'
         ]);
 
         // Create Product
@@ -93,7 +98,30 @@ class ProductListsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // From validation
+        $this->validate($request, [
+            'category_id' => 'required',
+            'product_name' => 'required',
+            'product_number' => 'required',
+            'party_id' => 'required',
+            'barcode' => 'required',
+            'sale_price' => 'required',
+            'print_quantity' => 'required'
+        ]);
+
+        // Create Product
+        $product = ProductList::find($id);
+        $product->category_id = $request->input('category_id');
+        $product->product_name = $request->input('product_name');
+        $product->product_number = $request->input('product_number');
+        $product->party_id = $request->input('party_id');
+        $product->barcode = $request->input('barcode');
+        $product->sale_price = $request->input('sale_price');
+        $product->print_quantity = $request->input('print_quantity');
+        $product->published = $request->input('published');
+        $product->save();
+
+        return redirect('/product_lists')->with('sucess', 'Product Updated');
     }
 
     /**
@@ -104,6 +132,16 @@ class ProductListsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Delete product
+        $product = ProductList::find($id);
+
+        // Check for correct user
+       /** if(auth()->user()->id !== $product->user_id){
+            return redirect('/products')->with('error', 'Unauthorized Page');
+        }**/
+        
+        $product->delete();
+
+        return redirect('/product_lists')->with('success', 'Product Removed');        
     }
 }
