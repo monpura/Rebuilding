@@ -51,6 +51,7 @@
                                 </tr>                            
                             @endforeach
                         </table>
+                        {{ $products->links() }}
                     @else
                         <p>You have no product</p>
 

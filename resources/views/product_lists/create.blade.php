@@ -5,7 +5,12 @@
     {{ Form::open(['action' => 'ProductListsController@store', 'method' => 'PSOT', 'enctype' => 'multipart/form-data']) }}
         <div class="form-group">
             {{ Form::label('category_id', 'Category ID') }}
-            {{ Form::select('category_id', [' - Select - ', 0, 1, 2]) }}
+            {{ Form::select('category_id', array(
+                '' => '- Select -',
+                0 => 'ctg1',
+                1 => 'ctg2',
+                2 => 'ctg3',
+                )) }}
         </div>
         <div class="form-group">
             {{ Form::label('product_name', 'Product Name') }}
@@ -17,7 +22,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('party_id', 'Party ID') }}
-            {{ Form::select('party_id', [' - Select - ', 0, 1, 2]) }}
+            {{ Form::select('party_id', array(
+                '' => '- Select -',
+                0 => 'ctg1',
+                1 => 'ctg2',
+                2 => 'ctg3',
+                )) }}
         </div>
         <div class="form-group">
             {{ Form::label('barcode', 'Barcode') }}
@@ -33,7 +43,7 @@
         </div>                 
         <div class="form-group">
             {{ Form::label('published', 'Published') }}
-            {{ Form::select('published', ['Yes', 'No']) }}
+            {{ Form::checkbox('published', '1')  }}
         </div>
           {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}
