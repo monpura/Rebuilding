@@ -80,7 +80,9 @@ class ProductListsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = ProductList::find($id);
+
+        return view('product_lists.edit')->with('product', $product);
     }
 
     /**
