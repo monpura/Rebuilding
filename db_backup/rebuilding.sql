@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2019 at 09:20 PM
+-- Generation Time: Jun 29, 2019 at 01:00 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -113,8 +113,7 @@ INSERT INTO `product_lists` (`id`, `category_id`, `product_name`, `product_numbe
 (3, 2, 'Product NameTest', 'Product Number Test', 1, 'Barcode', 200, 12, 0, 0, '2019-06-26 07:52:08', '2019-06-26 07:52:08'),
 (4, 2, 'Product NameTest1', 'Product Number1', 2, 'BarcodeBarcode', 12, 1, 1, 0, '2019-06-26 08:00:35', '2019-06-26 08:00:35'),
 (5, 0, 'Test select', 'Test select', 0, 'Test select', 234, 23, 1, 0, '2019-06-28 08:19:01', '2019-06-28 08:19:01'),
-(6, 0, 'Test Edit', 'Test Edit', 0, 'Test Edit', 200, 10, 0, 0, '2019-06-28 08:23:54', '2019-06-28 11:06:01'),
-(16, 0, 'Test From Home', 'Test From Home', 1, 'Test From Home', 100, 1, 1, 0, '2019-06-28 13:12:53', '2019-06-28 13:14:45');
+(6, 0, 'Test Edit', 'Test Edit', 0, 'Test Edit', 200, 10, 0, 0, '2019-06-28 08:23:54', '2019-06-28 11:06:01');
 
 -- --------------------------------------------------------
 
