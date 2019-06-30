@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2019 at 09:27 PM
+-- Generation Time: Jun 30, 2019 at 01:27 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -45,7 +45,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_04_24_091913_add_user_id_to_posts', 2),
 (5, '2019_04_25_074247_add_cover_image_to_posts', 3),
 (6, '2019_06_25_173647_create_product_lists_table', 4),
-(7, '2019_06_29_111300_add_fields_to_users', 5);
+(7, '2019_06_29_111300_add_fields_to_users', 5),
+(8, '2019_06_30_051937_create_user_groups_table', 6);
 
 -- --------------------------------------------------------
 
@@ -147,6 +148,31 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `passwo
 (1, 'Prasanta', 'Mondal', '', 'test@test.com', '$2y$10$wySyc10dCAGV0Y1GFlHIPuJT3SuAdlEDuy4M6YEn.pt2gpYjRrOiq', 0, 0, NULL, NULL, 0, 0, '2019-04-24 02:55:42', '2019-04-24 02:55:42'),
 (2, 'Test', '1', '', 'test1@test.com', '$2y$10$XxvmR5rP.CZwGTcwe0FV3e4Xfz6GlW9G3U/1UbpR2uUAVqIwdTgx2', 0, 0, NULL, NULL, 0, 0, '2019-04-24 05:45:39', '2019-04-24 05:45:39');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_groups`
+--
+
+CREATE TABLE `user_groups` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `group_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_access_link` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_groups`
+--
+
+INSERT INTO `user_groups` (`id`, `group_name`, `group_access_link`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
+(17, 'Group Name21', '1,2,3,', 1, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16'),
+(18, 'Group Name', '1,', 0, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16'),
+(20, 'Group Name', '1,2,3,', 0, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16');
+
 --
 -- Indexes for dumped tables
 --
@@ -183,6 +209,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -190,7 +222,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -208,7 +240,13 @@ ALTER TABLE `product_lists`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
