@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <a class="btn btn-default" href="/dashboard">Go Back</a><br>
                     <a class="btn btn-primary" href="/product_lists/create">Add Product</a>
                     <h3>All Products</h3>
                     @if(count($products) > 0)
