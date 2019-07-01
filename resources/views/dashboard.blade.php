@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a class="btn btn-primary" href="/posts/create">Create Post</a> <a class="btn btn-primary" href="/product_lists">Product Manager</a> <a class="btn btn-primary" href="/user_groups">User Manager</a> <a class="btn btn-primary" href="/categories">Product Category</a>
+                    <a class="btn btn-primary" href="/posts/create">Create Post</a> <a class="btn btn-primary" href="/product_lists">Product Manager</a> <a class="btn btn-primary" href="/user_groups">User Manager</a> <a class="btn btn-primary" href="/categories">Product Category</a>  <a class="btn btn-primary" href="/party_lists/create">Party Manager</a>
                     <h3>Your Blog Posts</h3>
                     @if(count($posts) > 0)
                         <table class="table table-striped">

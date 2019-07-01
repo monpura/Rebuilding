@@ -20,6 +20,7 @@ Route::resources([
     'product_lists' => 'ProductListsController',
     'user_groups' => 'UserGroupsController',
     'categories' => 'CategoriesController',
+    'party_lists' => 'PartyListsController',
 ]);
 Auth::routes();
 
