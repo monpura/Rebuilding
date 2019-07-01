@@ -58,7 +58,8 @@ class UserGroupsController extends Controller
                     $group_access .= $value;
                }
            }
-
+           
+        $group_access = rtrim($group_access,','); 
         // Create User Group
         $usergroup = new UserGroup;
         $usergroup->group_name = $request->input('group_name');

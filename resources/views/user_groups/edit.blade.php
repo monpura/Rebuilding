@@ -27,30 +27,39 @@
                             <label for="group_access_link" class="col-md-4 col-form-label text-md-right">{{ __('Group Access') }}</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" name="group_access_link[]" value="1" />
+                                {{$usergroup->group_access_link}}
+                                @php 
+                                    $group_access = explode(',', $usergroup->group_access_link);
+                                    // view result using var_dump
+                                    //print_r($group_access);
+                                @endphp
+
+                                @foreach($group_access as $access)
+                                    <!--{{ $access }}<br>-->
+                                    @if($access == 1)
+                                        {{ Form::checkbox('group_access_link[]', $access, old('group_access_link[]', true)) }}
+                                        {{ Form::hidden('group_access_link[]', 0) }}
+                                        {{ Form::hidden('group_access_link[]', 1) }}
+                                    @else
+                                        {{ Form::hidden('group_access_link[]', 0) }}
+                                        {{ Form::checkbox('group_access_link[]', 1) }}     
+                                    @endif
+                                    @if($access == 2)
+                                        {{ Form::checkbox('group_access_link[]', $access, old('group_access_link[]', true)) }}
+                                        {{ Form::hidden('group_access_link[]', 0) }}
+                                        {{ Form::hidden('group_access_link[]', 1) }}
+                                    @else
+                                        {{ Form::hidden('group_access_link[]', 0) }}
+                                        {{ Form::checkbox('group_access_link[]', 1) }}     
+                                    @endif                                    
+                                @endforeach
+                                <!--<input type="checkbox" name="group_access_link[]" value="1" />
                                 <label for="group_access_link[]" class="col-md-4 col-form-label">{{ __('Access 1') }}</label><br>
                                 <input type="checkbox" name="group_access_link[]" value="2" />
                                 <label for="group_access_link[]" class="col-md-4 col-form-label">{{ __('Access 2') }}</label><br>
                                 <input type="checkbox" name="group_access_link[]" value="3" />
-                                <label for="group_access_link[]" class="col-md-4 col-form-label">{{ __('Access 3') }}</label>
-                                @if($usergroup->published == 1)
-                                    {{ Form::checkbox('published', $usergroup->published, old('published', true)) }}
-                                    {{ Form::hidden('published', 0) }}
-                                    {{ Form::hidden('published', 1) }}
-                                @else
-                                    {{ Form::hidden('published', 0) }}
-                                    {{ Form::checkbox('published', 1) }}         
-                                @endif
+                                <label for="group_access_link[]" class="col-md-4 col-form-label">{{ __('Access 3') }}</label>-->
                             </div>
-                            {{$usergroup->group_access_link}}
-@php $fruits_ars = explode(',', $usergroup->group_access_link);
-// view result using var_dump
-print_r($fruits_ars);
-@endphp
-
-  @foreach($fruits_ars as $user)
-    {{ $user }}<br>
-  @endforeach
                         </div>
 
                         <div class="form-group row">
