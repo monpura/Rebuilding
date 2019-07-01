@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2019 at 02:39 PM
+-- Generation Time: Jul 01, 2019 at 04:03 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -71,7 +71,42 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2019_06_25_173647_create_product_lists_table', 4),
 (7, '2019_06_29_111300_add_fields_to_users', 5),
 (8, '2019_06_30_051937_create_user_groups_table', 6),
-(9, '2019_07_01_080340_create_categories_table', 7);
+(9, '2019_07_01_080340_create_categories_table', 7),
+(10, '2019_07_01_124654_create_party_lists_table', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `party_lists`
+--
+
+CREATE TABLE `party_lists` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `party_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_contact_person` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_contact_number` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_code` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_address` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_trade_licence_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_vat_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_tin_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_bank_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_bank_ac_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_cheque_routing_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `party_type` tinyint(4) NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `party_lists`
+--
+
+INSERT INTO `party_lists` (`id`, `party_name`, `party_email`, `party_contact_person`, `party_contact_number`, `party_code`, `party_address`, `party_trade_licence_no`, `party_vat_no`, `party_tin_no`, `party_bank_name`, `party_bank_ac_no`, `party_cheque_routing_no`, `party_type`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
+(1, 'Party Name', 'Email', 'Contact Person', 'Contact Number', 'Code', 'Address', 'Trade Licence no.', 'VAT no.', 'TIN no.', 'Bank Name', 'Bank Account no.', 'Cheque Routing no.', 1, 0, 0, '2019-07-01 07:41:30', '2019-07-01 07:41:30');
 
 -- --------------------------------------------------------
 
@@ -216,6 +251,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `party_lists`
+--
+ALTER TABLE `party_lists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -260,7 +301,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `party_lists`
+--
+ALTER TABLE `party_lists`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `posts`
