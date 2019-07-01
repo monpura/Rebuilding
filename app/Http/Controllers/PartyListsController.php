@@ -82,7 +82,9 @@ class PartyListsController extends Controller
      */
     public function show($id)
     {
-        //
+        $party_list = PartyList::find($id);
+
+        return view('party_lists.show')->with('party_list', $party_list);
     }
 
     /**
