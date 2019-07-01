@@ -131,7 +131,14 @@ class ProductListsController extends Controller
         $product->barcode = $request->input('barcode');
         $product->sale_price = $request->input('sale_price');
         $product->print_quantity = $request->input('print_quantity');
-        $product->published = $request->input('published');
+        if($request->input('published') == 0)
+        {
+            $product->published = 0;
+        }
+        else
+        {
+            $product->published = $request->input('published');
+        }
         $product->save();
 
         return redirect('/product_lists')->with('sucess', 'Product Updated');

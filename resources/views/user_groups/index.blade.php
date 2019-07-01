@@ -15,7 +15,7 @@
                     @endif
                     <a class="btn btn-default" href="/dashboard">Go Back</a><br>
                     <a class="btn btn-primary" href="/user_groups/create">Add User Group</a>
-                    <h3>All Iser Groups</h3>
+                    <h3>All User Groups</h3>
                     @if(count($usergroups) > 0)
                         <table class="table table-striped">
                             <tr>

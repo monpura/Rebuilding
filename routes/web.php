@@ -18,7 +18,8 @@ Route::get('/services', 'PagesController@services');
 Route::resources([
     'posts' => 'PostsController',
     'product_lists' => 'ProductListsController',
-    'user_groups' => 'UserGroupsController'
+    'user_groups' => 'UserGroupsController',
+    'categories' => 'CategoriesController',
 ]);
 Auth::routes();
 

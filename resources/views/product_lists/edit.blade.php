@@ -43,14 +43,10 @@
         </div>                 
         <div class="form-group">
             {{ Form::label('published', 'Published') }}
-            <!--{{ Form::checkbox('published', $product->published)  }}-->
-            @if($product->published == 1)
-                {{ Form::checkbox('published', $product->published, old('published', true)) }}
-                {{ Form::hidden('published', 0) }}
-                {{ Form::hidden('published', 1) }}
+            @if($product_category->published == 1)
+                {{ Form::checkbox('published', 1, old('published', true)) }}
             @else
-                {{ Form::hidden('published', 0) }}
-                {{ Form::checkbox('published', 1) }}         
+                {{ Form::checkbox('published', 1, old('published', false)) }}        
             @endif
         </div>
         {{ Form::hidden('_method', 'PUT') }}
