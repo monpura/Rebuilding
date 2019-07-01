@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2019 at 01:27 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Jul 01, 2019 at 02:39 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `rebuilding`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
+(8, 'Ctg2', 1, 1, '2019-07-01 05:07:40', '2019-07-01 06:39:16'),
+(9, 'Ctg3', 0, 1, '2019-07-01 05:07:54', '2019-07-01 05:07:54'),
+(10, 'Ctg4', 1, 1, '2019-07-01 05:08:02', '2019-07-01 05:08:02');
 
 -- --------------------------------------------------------
 
@@ -46,7 +70,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2019_04_25_074247_add_cover_image_to_posts', 3),
 (6, '2019_06_25_173647_create_product_lists_table', 4),
 (7, '2019_06_29_111300_add_fields_to_users', 5),
-(8, '2019_06_30_051937_create_user_groups_table', 6);
+(8, '2019_06_30_051937_create_user_groups_table', 6),
+(9, '2019_07_01_080340_create_categories_table', 7);
 
 -- --------------------------------------------------------
 
@@ -169,13 +194,20 @@ CREATE TABLE `user_groups` (
 --
 
 INSERT INTO `user_groups` (`id`, `group_name`, `group_access_link`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
-(17, 'Group Name21', '1,2,3,', 1, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16'),
-(18, 'Group Name', '1,', 0, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16'),
-(20, 'Group Name', '1,2,3,', 0, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16');
+(17, 'Group Name21', '1,2,3', 1, 0, '2019-06-30 03:45:16', '2019-06-30 03:45:16'),
+(21, 'Test Ofc', '1', 0, 0, '2019-07-01 01:01:43', '2019-07-01 01:01:43'),
+(22, 'Test Ofc2', '1,2', 0, 0, '2019-07-01 01:01:54', '2019-07-01 01:01:54'),
+(23, 'Test Ofc3', '1,2,3', 1, 0, '2019-07-01 01:06:26', '2019-07-01 01:06:26');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -219,10 +251,16 @@ ALTER TABLE `user_groups`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -246,7 +284,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_groups`
 --
 ALTER TABLE `user_groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
