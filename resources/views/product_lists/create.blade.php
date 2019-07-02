@@ -1,51 +1,148 @@
 @extends('layouts.app')
-
+@php
+    use App\Category;
+    use App\PartyList;
+    $product_categories = array();
+    $product_categories = Category::all('id', 'category_name', 'deleted');
+    $party_lists = array();
+    $party_lists = PartyList::all('id', 'party_name', 'deleted');
+    //var_dump($party_lists);
+@endphp
 @section('content')
-    <h1>Add Product</h1>
-    {{ Form::open(['action' => 'ProductListsController@store', 'method' => 'PSOT', 'enctype' => 'multipart/form-data']) }}
-        <div class="form-group">
-            {{ Form::label('category_id', 'Category ID') }}
-            {{ Form::select('category_id', array(
-                '' => '- Select -',
-                0 => 'ctg1',
-                1 => 'ctg2',
-                2 => 'ctg3',
-                )) }}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Add Product') }}</div>
+                <div class="card-body">
+                    {{ Form::open(['action' => 'ProductListsController@store', 'method' => 'PSOT', 'enctype' => 'multipart/form-data']) }}
+                        <div class="form-group row">
+                            <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category ID') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="category_id" type="text" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required autofocus>
+                                    @foreach($product_categories as $product_category)
+                                        @if($product_category['deleted'] == 0 )
+                                            <option value="{{$product_category['id']}}">{{$product_category['category_name']}}</option>
+                                        @endif
+                                    @endForeach
+                                </select>  
+
+                                @if ($errors->has('category_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('category_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="product_name" class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="product_name" type="text" class="form-control{{ $errors->has('product_name') ? ' is-invalid' : '' }}" name="product_name" value="{{ old('product_name') }}" required>
+
+                                @if ($errors->has('product_name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('product_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+
+                        <div class="form-group row">
+                            <label for="product_number" class="col-md-4 col-form-label text-md-right">{{ __('Product Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="product_number" type="text" class="form-control{{ $errors->has('product_number') ? ' is-invalid' : '' }}" name="product_number" value="{{ old('product_number') }}" required>
+
+                                @if ($errors->has('product_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('product_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+
+                        <div class="form-group row">
+                            <label for="party_id" class="col-md-4 col-form-label text-md-right">{{ __('Party ID') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="party_id" type="text" class="form-control{{ $errors->has('party_id') ? ' is-invalid' : '' }}" name="party_id" value="{{ old('party_id') }}" required>
+                                    @foreach($party_lists as $party_list)
+                                        @if($party_list['deleted'] == 0 )                                    
+                                            <option value="{{$party_list['id']}}">{{$party_list['party_name']}}</option>
+                                        @endif
+                                    @endForeach
+                                </select>                                
+
+                                @if ($errors->has('party_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('party_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+
+                        <div class="form-group row">
+                            <label for="barcode" class="col-md-4 col-form-label text-md-right">{{ __('Barcode') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="barcode" type="text" class="form-control{{ $errors->has('barcode') ? ' is-invalid' : '' }}" name="barcode" value="{{ old('barcode') }}" required>
+
+                                @if ($errors->has('barcode'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('barcode') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+
+                        <div class="form-group row">
+                            <label for="sale_price" class="col-md-4 col-form-label text-md-right">{{ __('Group Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="sale_price" type="text" class="form-control{{ $errors->has('sale_price') ? ' is-invalid' : '' }}" name="sale_price" value="{{ old('sale_price') }}" required>
+
+                                @if ($errors->has('sale_price'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('sale_price') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+  
+                        <div class="form-group row">
+                            <label for="print_quantity" class="col-md-4 col-form-label text-md-right">{{ __('Print Quantity') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="print_quantity" type="text" class="form-control{{ $errors->has('print_quantity') ? ' is-invalid' : '' }}" name="print_quantity" value="{{ old('print_quantity') }}" required>
+
+                                @if ($errors->has('print_quantity'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('print_quantity') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div> 
+                
+                        <div class="form-group row">
+                            {{ Form::label('published', 'Published', ['class' => 'col-md-4 col-form-label text-md-right']) }}
+
+                            <div class="col-md-6">
+                                {{ Form::checkbox('published', 1) }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">        
+                                {{ Form::submit('Save', ['class' => 'btn btn-primary']) }} <a href="/product_lists" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </div>                                
+                    {{ Form::close() }}
+                 </div>
+            </div>
         </div>
-        <div class="form-group">
-            {{ Form::label('product_name', 'Product Name') }}
-            {{ Form::text('product_name', '', ['class' => 'form-control', 'placeholder' => 'Product Name']) }}
-        </div>
-        <div class="form-group">
-            {{ Form::label('product_number', 'Product Number') }}
-            {{ Form::text('product_number', '', ['class' => 'form-control', 'placeholder' => 'Product Number']) }}
-        </div>
-        <div class="form-group">
-            {{ Form::label('party_id', 'Party ID') }}
-            {{ Form::select('party_id', array(
-                '' => '- Select -',
-                0 => 'ctg1',
-                1 => 'ctg2',
-                2 => 'ctg3',
-                )) }}
-        </div>
-        <div class="form-group">
-            {{ Form::label('barcode', 'Barcode') }}
-            {{ Form::text('barcode', '', ['class' => 'form-control', 'placeholder' => 'Place Barcode']) }}
-        </div>    
-        <div class="form-group">
-            {{ Form::label('sale_price', 'Sale Price') }}
-            {{ Form::text('sale_price', '', ['class' => 'form-control', 'placeholder' => 'Sale Price']) }}
-        </div>  
-        <div class="form-group">
-            {{ Form::label('print_quantity', 'Print Quantity') }}
-            {{ Form::number('print_quantity', '', ['class' => 'form-control', 'placeholder' => 'Print Quantity']) }}
-        </div>                 
-        <div class="form-group">
-            {{ Form::label('published', 'Published') }}
-            {{ Form::hidden('published', 0) }}
-            {{ Form::checkbox('published', 1) }}
-        </div>
-          {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
-    {{ Form::close() }}
+    </div>
+</div>
 @endsection
