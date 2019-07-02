@@ -111,13 +111,25 @@ class PartyListsController extends Controller
     {
         // From validation
         $this->validate($request, [
-            'PartyList_name' => 'required',
+            'party_name' => 'required',
         ]);
         
 
         // Update Product PartyList
         $party_list = PartyList::find($id);
-        $party_list->PartyList_name = $request->input('PartyList_name');
+        $party_list->party_name = $request->input('party_name');
+        $party_list->party_email = $request->input('party_email');
+        $party_list->party_contact_person = $request->input('party_contact_person');
+        $party_list->party_contact_number = $request->input('party_contact_number');
+        $party_list->party_code = $request->input('party_code');
+        $party_list->party_address = $request->input('party_address');
+        $party_list->party_trade_licence_no = $request->input('party_trade_licence_no');
+        $party_list->party_vat_no = $request->input('party_vat_no');
+        $party_list->party_tin_no = $request->input('party_tin_no');
+        $party_list->party_bank_name = $request->input('party_bank_name');
+        $party_list->party_bank_ac_no = $request->input('party_bank_ac_no');
+        $party_list->party_cheque_routing_no = $request->input('party_cheque_routing_no');
+        $party_list->party_type = $request->input('party_type');        
         if($request->input('published') == 0)
         {
             $party_list->published = 0;
