@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2019 at 04:03 PM
+-- Generation Time: Jul 02, 2019 at 03:02 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -42,9 +42,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
-(8, 'Ctg2', 1, 1, '2019-07-01 05:07:40', '2019-07-01 06:39:16'),
+(8, 'Ctg2', 1, 0, '2019-07-01 05:07:40', '2019-07-01 06:39:16'),
 (9, 'Ctg3', 0, 1, '2019-07-01 05:07:54', '2019-07-01 05:07:54'),
-(10, 'Ctg4', 1, 1, '2019-07-01 05:08:02', '2019-07-01 05:08:02');
+(10, 'Ctg4', 1, 0, '2019-07-01 05:08:02', '2019-07-01 05:08:02');
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,7 @@ CREATE TABLE `party_lists` (
   `party_cheque_routing_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `party_type` tinyint(4) NOT NULL,
   `published` tinyint(4) NOT NULL,
-  `deleted` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -106,7 +106,9 @@ CREATE TABLE `party_lists` (
 --
 
 INSERT INTO `party_lists` (`id`, `party_name`, `party_email`, `party_contact_person`, `party_contact_number`, `party_code`, `party_address`, `party_trade_licence_no`, `party_vat_no`, `party_tin_no`, `party_bank_name`, `party_bank_ac_no`, `party_cheque_routing_no`, `party_type`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
-(1, 'Party Name', 'Email', 'Contact Person', 'Contact Number', 'Code', 'Address', 'Trade Licence no.', 'VAT no.', 'TIN no.', 'Bank Name', 'Bank Account no.', 'Cheque Routing no.', 1, 0, 0, '2019-07-01 07:41:30', '2019-07-01 07:41:30');
+(2, 'WEBSNIT', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 1, '2019-07-02 03:01:54', '2019-07-02 03:01:54'),
+(3, 'WEBSNIT 1', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 0, '2019-07-02 03:01:54', '2019-07-02 03:01:54'),
+(4, 'WEBSNIT 2', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 0, '2019-07-02 03:01:54', '2019-07-02 03:01:54');
 
 -- --------------------------------------------------------
 
@@ -175,7 +177,9 @@ INSERT INTO `product_lists` (`id`, `category_id`, `product_name`, `product_numbe
 (3, 2, 'Product NameTest', 'Product Number Test', 1, 'Barcode', 200, 12, 0, 0, '2019-06-26 07:52:08', '2019-06-26 07:52:08'),
 (4, 2, 'Product NameTest1', 'Product Number1', 2, 'BarcodeBarcode', 12, 1, 1, 0, '2019-06-26 08:00:35', '2019-06-26 08:00:35'),
 (5, 0, 'Test select', 'Test select', 0, 'Test select', 234, 23, 1, 0, '2019-06-28 08:19:01', '2019-06-28 08:19:01'),
-(6, 0, 'Test Edit', 'Test Edit', 0, 'Test Edit', 200, 10, 0, 0, '2019-06-28 08:23:54', '2019-06-28 11:06:01');
+(6, 10, 'Tested Edit', 'Test Edit', 4, 'Test Edit', 200, 10, 0, 0, '2019-06-28 08:23:54', '2019-07-02 06:36:19'),
+(7, 1, 'Product Name009', 'Product Number', 0, 'Barcode', 388, 3, 1, 0, '2019-07-02 04:44:30', '2019-07-02 05:09:27'),
+(8, 8, 'Product Name009', 'Product Number', 2, 'Barcode', 388, 3, 0, 0, '2019-07-02 06:01:13', '2019-07-02 06:01:13');
 
 -- --------------------------------------------------------
 
@@ -295,7 +299,7 @@ ALTER TABLE `user_groups`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -307,7 +311,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `party_lists`
 --
 ALTER TABLE `party_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -319,7 +323,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `product_lists`
 --
 ALTER TABLE `product_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
