@@ -3,9 +3,9 @@
     use App\Category;
     use App\PartyList;
     $product_categories = array();
-    $product_categories = Category::all('id', 'category_name', 'deleted');
+    $product_categories = Category::where('deleted', 0)->get(['id', 'category_name']);
     $party_lists = array();
-    $party_lists = PartyList::all('id', 'party_name', 'deleted');
+    $party_lists = PartyList::where('deleted', 0)->get(['id', 'party_name']);
     //var_dump($party_lists);
 @endphp
 @section('content')
@@ -22,9 +22,7 @@
                             <div class="col-md-6">
                                 <select id="category_id" type="text" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required autofocus>
                                     @foreach($product_categories as $product_category)
-                                        @if($product_category['deleted'] == 0 )
                                             <option value="{{$product_category['id']}}">{{$product_category['category_name']}}</option>
-                                        @endif
                                     @endForeach
                                 </select>  
 
@@ -70,9 +68,7 @@
                             <div class="col-md-6">
                                 <select id="party_id" type="text" class="form-control{{ $errors->has('party_id') ? ' is-invalid' : '' }}" name="party_id" value="{{ old('party_id') }}" required>
                                     @foreach($party_lists as $party_list)
-                                        @if($party_list['deleted'] == 0 )                                    
                                             <option value="{{$party_list['id']}}">{{$party_list['party_name']}}</option>
-                                        @endif
                                     @endForeach
                                 </select>                                
 

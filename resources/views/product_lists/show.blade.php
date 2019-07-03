@@ -1,5 +1,13 @@
 @extends('layouts.app')
-
+@php
+    use App\Category;
+    use App\PartyList;
+    $product_categories = array();
+    $product_categories = Category::where('deleted', 0)->get(['id', 'category_name']);
+    $party_lists = array();
+    $party_lists = PartyList::where('deleted', 0)->get(['id', 'party_name']);
+    //var_dump($party_lists);
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +23,20 @@
                         </div>                   
                         <div class="row">
                             <div class="col-md-4 text-md-right"> Category ID: </div>
-                            <div class="col-md-6"> {{ $product->category_id }} </div>
+                            <div class="col-md-6">
+                                @foreach($product_categories as $product_category)
+                                    @if($product->category_id == $product_category['id'] && $product_category['deleted'] == 0)
+                                        {{$product_category['category_name']}}
+                                    @else
+                                        @php
+                                            $onctg = 'Category deleted.';
+                                        @endphp
+                                    @endif
+                                @endForeach
+                                                                        @php
+                                            echo $onctg;
+                                        @endphp
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 text-md-right"> Product Number: </div>
