@@ -1,5 +1,10 @@
 @extends('layouts.app')
-
+@php
+    use App\Category;
+    use App\PartyList;
+    $product_categories = array();
+    $product_categories = Category::all('id', 'category_name', 'deleted');
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -31,10 +36,18 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td><a href="/product_lists/{{ $product->id }}"> {{ $product->product_name }}</a></td>
-                                    <td>{!! $product->product_number !!}</td>
-                                    <td>{!! $product->barcode !!}</td>
-                                    <td>{!! $product->category_id !!}</td>
-                                    <td>{!! $product->sale_price !!}</td>
+                                    <td>{{ $product->product_number }}</td>
+                                    <td>{{ $product->barcode }}</td>
+                                    <td>
+                                        @foreach($product_categories as $product_category)
+                                            @if($product->category_id == $product_category['id'] && $product_category['deleted'] == 1)
+                                                {{$product_category['category_name']}}
+                                            @elseif($product->category_id == $product_category['id'] && $product_category['deleted'] == 0)
+                                                    {{$product_category['category_name']}} (Deleted)
+                                            @endif
+                                        @endforeach                                       
+                                    </td>
+                                    <td>{{ $product->sale_price }}</td>
                                     <td>
                                         @if($product->published == 1)
                                             Yes
@@ -44,11 +57,10 @@
                                     </td>
                                     <td><a href="/product_lists/{{ $product->id }}/edit" class="btn btn-default">Edit</td>
                                     <td>
-                                        {!! Form::open(['action' => ['ProductListsController@destroy', $product->id], 'method' => 'PSOT', 'class' => 'pull-right']) !!}
+                                        {{ Form::open(['action' => ['ProductListsController@destroy', $product->id], 'method' => 'PSOT', 'class' => 'pull-right']) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
                                             {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                                        {!! Form::close() !!}
-                                    </td>
+                                        {{ Form::close() }}
                                 </tr>                            
                             @endforeach
                         </table>

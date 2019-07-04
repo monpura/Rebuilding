@@ -28,7 +28,7 @@ class ProductListsController extends Controller
      */
     public function index()
     {
-        $products = ProductList::orderBy('created_at', 'desc')->paginate(3);
+        $products = ProductList::where('deleted', 1)->orderBy('created_at', 'desc')->paginate(3);
         return view('product_lists.index')->with('products', $products);
     }
 
@@ -78,7 +78,7 @@ class ProductListsController extends Controller
         {
             $product->published = $request->input('published');
         }
-        $product->deleted = 0;
+        $product->deleted = 1;
         $product->save();
 
         return redirect('/product_lists')->with('sucess', 'Product Added');

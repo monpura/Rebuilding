@@ -3,9 +3,9 @@
     use App\Category;
     use App\PartyList;
     $product_categories = array();
-    $product_categories = Category::where('deleted', 0)->get(['id', 'category_name']);
+    $product_categories = Category::where('deleted', 1)->get(['id', 'category_name']);
     $party_lists = array();
-    $party_lists = PartyList::where('deleted', 0)->get(['id', 'party_name']);
+    $party_lists = PartyList::where('deleted', 1)->get(['id', 'party_name']);
     //var_dump($party_lists);
 @endphp
 @section('content')
@@ -17,7 +17,7 @@
                 <div class="card-body">
                     {{ Form::open(['action' => 'ProductListsController@store', 'method' => 'PSOT', 'enctype' => 'multipart/form-data']) }}
                         <div class="form-group row">
-                            <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category ID') }}</label>
+                            <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
                                 <select id="category_id" type="text" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required autofocus>
@@ -63,7 +63,7 @@
                         </div>  
 
                         <div class="form-group row">
-                            <label for="party_id" class="col-md-4 col-form-label text-md-right">{{ __('Party ID') }}</label>
+                            <label for="party_id" class="col-md-4 col-form-label text-md-right">{{ __('Party') }}</label>
 
                             <div class="col-md-6">
                                 <select id="party_id" type="text" class="form-control{{ $errors->has('party_id') ? ' is-invalid' : '' }}" name="party_id" value="{{ old('party_id') }}" required>

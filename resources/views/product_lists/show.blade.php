@@ -3,9 +3,9 @@
     use App\Category;
     use App\PartyList;
     $product_categories = array();
-    $product_categories = Category::where('deleted', 0)->get(['id', 'category_name']);
+    $product_categories = Category::all('id', 'category_name', 'deleted');
     $party_lists = array();
-    $party_lists = PartyList::where('deleted', 0)->get(['id', 'party_name']);
+    $party_lists = PartyList::all('id', 'party_name', 'deleted');
     //var_dump($party_lists);
 @endphp
 @section('content')
@@ -22,20 +22,15 @@
                             <div class="col-md-6"> {{ $product->id }} </div>
                         </div>                   
                         <div class="row">
-                            <div class="col-md-4 text-md-right"> Category ID: </div>
+                            <div class="col-md-4 text-md-right"> Category: </div>
                             <div class="col-md-6">
                                 @foreach($product_categories as $product_category)
-                                    @if($product->category_id == $product_category['id'] && $product_category['deleted'] == 0)
+                                    @if($product->category_id == $product_category['id'] && $product_category['deleted'] == 1)
                                         {{$product_category['category_name']}}
-                                    @else
-                                        @php
-                                            $onctg = 'Category deleted.';
-                                        @endphp
+                                    @elseif($product->category_id == $product_category['id'] && $product_category['deleted'] == 0)
+                                        {{$product_category['category_name']}} (Deleted)
                                     @endif
-                                @endForeach
-                                                                        @php
-                                            echo $onctg;
-                                        @endphp
+                                @endforeach
                             </div>
                         </div>
                         <div class="row">
@@ -43,8 +38,16 @@
                             <div class="col-md-6"> {{ $product->product_number }} </div>
                         </div>                        
                         <div class="row">
-                            <div class="col-md-4 text-md-right"> Party ID: </div>
-                            <div class="col-md-6"> {{ $product->party_id }} </div>
+                            <div class="col-md-4 text-md-right"> Party: </div>
+                            <div class="col-md-6">
+                                @foreach($party_lists as $party_list)
+                                    @if($product->party_id == $party_list['id'] && $party_list['deleted'] == 1)
+                                        {{$party_list['party_name']}}
+                                    @elseif($product->party_id == $party_list['id'] && $party_list['deleted'] == 0)
+                                        {{$party_list['party_name']}} (Deleted)    
+                                    @endif
+                                @endforeach                                
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 text-md-right"> Barcode: </div>
