@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2019 at 03:02 PM
+-- Generation Time: Jul 04, 2019 at 03:45 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -44,7 +44,7 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `category_name`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
 (8, 'Ctg2', 1, 0, '2019-07-01 05:07:40', '2019-07-01 06:39:16'),
 (9, 'Ctg3', 0, 1, '2019-07-01 05:07:54', '2019-07-01 05:07:54'),
-(10, 'Ctg4', 1, 0, '2019-07-01 05:08:02', '2019-07-01 05:08:02');
+(10, 'Ctg4', 1, 1, '2019-07-01 05:08:02', '2019-07-01 05:08:02');
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ CREATE TABLE `party_lists` (
 INSERT INTO `party_lists` (`id`, `party_name`, `party_email`, `party_contact_person`, `party_contact_number`, `party_code`, `party_address`, `party_trade_licence_no`, `party_vat_no`, `party_tin_no`, `party_bank_name`, `party_bank_ac_no`, `party_cheque_routing_no`, `party_type`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
 (2, 'WEBSNIT', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 1, '2019-07-02 03:01:54', '2019-07-02 03:01:54'),
 (3, 'WEBSNIT 1', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 0, '2019-07-02 03:01:54', '2019-07-02 03:01:54'),
-(4, 'WEBSNIT 2', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 0, '2019-07-02 03:01:54', '2019-07-02 03:01:54');
+(4, 'WEBSNIT 2', 'info@websnit.com', 'Mr.Nurul Islam', '01676232587', '001', 'Mirpur Dhaka-1216', '095387', '567890987', '12345432768', 'Bank Alfalah', '90863467', '3457729', 1, 0, 1, '2019-07-02 03:01:54', '2019-07-02 03:01:54');
 
 -- --------------------------------------------------------
 
@@ -172,14 +172,28 @@ CREATE TABLE `product_lists` (
 --
 
 INSERT INTO `product_lists` (`id`, `category_id`, `product_name`, `product_number`, `party_id`, `barcode`, `sale_price`, `print_quantity`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Product Name', 'Product Number', 0, 'Barcode', 12, 2, 1, 0, '2019-06-26 07:50:49', '2019-06-28 12:54:25'),
-(2, 0, 'Product Name', 'Product Number', 1, 'Barcode', 23, 12, 1, 0, '2019-06-26 07:51:10', '2019-06-26 07:51:10'),
-(3, 2, 'Product NameTest', 'Product Number Test', 1, 'Barcode', 200, 12, 0, 0, '2019-06-26 07:52:08', '2019-06-26 07:52:08'),
-(4, 2, 'Product NameTest1', 'Product Number1', 2, 'BarcodeBarcode', 12, 1, 1, 0, '2019-06-26 08:00:35', '2019-06-26 08:00:35'),
-(5, 0, 'Test select', 'Test select', 0, 'Test select', 234, 23, 1, 0, '2019-06-28 08:19:01', '2019-06-28 08:19:01'),
+(1, 9, 'Product Name', 'Product Number', 2, 'Barcode', 12, 2, 1, 0, '2019-06-26 07:50:49', '2019-06-28 12:54:25'),
+(2, 8, 'Product Name', 'Product Number', 3, 'Barcode', 23, 12, 1, 0, '2019-06-26 07:51:10', '2019-06-26 07:51:10'),
+(3, 10, 'Product NameTest', 'Product Number Test', 2, 'Barcode', 200, 12, 0, 0, '2019-06-26 07:52:08', '2019-06-26 07:52:08'),
+(4, 8, 'Product NameTest1', 'Product Number1', 2, 'BarcodeBarcode', 12, 1, 1, 1, '2019-06-26 08:00:35', '2019-06-26 08:00:35'),
+(5, 9, 'Test select', 'Test select', 3, 'Test select', 234, 23, 1, 0, '2019-06-28 08:19:01', '2019-06-28 08:19:01'),
 (6, 10, 'Tested Edit', 'Test Edit', 4, 'Test Edit', 200, 10, 0, 0, '2019-06-28 08:23:54', '2019-07-02 06:36:19'),
-(7, 1, 'Product Name009', 'Product Number', 0, 'Barcode', 388, 3, 1, 0, '2019-07-02 04:44:30', '2019-07-02 05:09:27'),
-(8, 8, 'Product Name009', 'Product Number', 2, 'Barcode', 388, 3, 0, 0, '2019-07-02 06:01:13', '2019-07-02 06:01:13');
+(7, 9, 'Product Name009', 'Product Number', 4, 'Barcode', 388, 3, 1, 0, '2019-07-02 04:44:30', '2019-07-03 12:32:49'),
+(8, 9, 'Product Name3', 'Product Number', 2, 'Barcode', 388, 3, 0, 0, '2019-07-02 06:01:13', '2019-07-03 12:32:39'),
+(9, 9, 'Product Name', 'Product Number', 2, 'Barcode', 23, 12, 1, 0, '2019-06-26 07:51:10', '2019-06-26 07:51:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usergroup_access_mapping`
+--
+
+CREATE TABLE `usergroup_access_mapping` (
+  `id` int(10) NOT NULL,
+  `user_group_id` int(10) NOT NULL,
+  `access_id` int(10) NOT NULL,
+  `created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -211,6 +225,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `g_id`, `daily_transaction_report`, `email_verified_at`, `remember_token`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
 (1, 'Prasanta', 'Mondal', '', 'test@test.com', '$2y$10$wySyc10dCAGV0Y1GFlHIPuJT3SuAdlEDuy4M6YEn.pt2gpYjRrOiq', 0, 0, NULL, NULL, 0, 0, '2019-04-24 02:55:42', '2019-04-24 02:55:42'),
 (2, 'Test', '1', '', 'test1@test.com', '$2y$10$XxvmR5rP.CZwGTcwe0FV3e4Xfz6GlW9G3U/1UbpR2uUAVqIwdTgx2', 0, 0, NULL, NULL, 0, 0, '2019-04-24 05:45:39', '2019-04-24 05:45:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_access`
+--
+
+CREATE TABLE `user_access` (
+  `id` int(10) NOT NULL,
+  `access_name` varchar(250) NOT NULL,
+  `status` int(11) NOT NULL,
+  `deleted` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -279,11 +306,23 @@ ALTER TABLE `product_lists`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `usergroup_access_mapping`
+--
+ALTER TABLE `usergroup_access_mapping`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `user_access`
+--
+ALTER TABLE `user_access`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_groups`
@@ -311,7 +350,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `party_lists`
 --
 ALTER TABLE `party_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -323,13 +362,25 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `product_lists`
 --
 ALTER TABLE `product_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `usergroup_access_mapping`
+--
+ALTER TABLE `usergroup_access_mapping`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_access`
+--
+ALTER TABLE `user_access`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_groups`
