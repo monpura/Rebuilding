@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2019 at 03:45 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jul 06, 2019 at 09:04 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `rebuilding`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `action_types`
+--
+
+CREATE TABLE `action_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `action_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `action_types`
+--
+
+INSERT INTO `action_types` (`id`, `action_type`, `published`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(5, 'Show', 1, '2019-07-05 12:59:11', '2019-07-06 11:53:54', '2019-07-06 11:53:54'),
+(6, 'Add', 1, '2019-07-05 12:59:27', '2019-07-06 05:29:00', NULL),
+(7, 'Edit', 1, '2019-07-05 12:59:48', '2019-07-06 11:53:36', NULL),
+(8, 'Delete', 1, '2019-07-05 12:59:58', '2019-07-06 05:31:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,7 +97,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2019_06_29_111300_add_fields_to_users', 5),
 (8, '2019_06_30_051937_create_user_groups_table', 6),
 (9, '2019_07_01_080340_create_categories_table', 7),
-(10, '2019_07_01_124654_create_party_lists_table', 8);
+(10, '2019_07_01_124654_create_party_lists_table', 8),
+(11, '2019_07_05_170401_create_actions_table', 9),
+(12, '2019_07_05_171308_create_action_types_table', 10),
+(13, '2019_07_05_193055_add_deleted_at_column_to_action_types', 11);
 
 -- --------------------------------------------------------
 
@@ -185,19 +213,6 @@ INSERT INTO `product_lists` (`id`, `category_id`, `product_name`, `product_numbe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usergroup_access_mapping`
---
-
-CREATE TABLE `usergroup_access_mapping` (
-  `id` int(10) NOT NULL,
-  `user_group_id` int(10) NOT NULL,
-  `access_id` int(10) NOT NULL,
-  `created` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -229,19 +244,6 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `passwo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access`
---
-
-CREATE TABLE `user_access` (
-  `id` int(10) NOT NULL,
-  `access_name` varchar(250) NOT NULL,
-  `status` int(11) NOT NULL,
-  `deleted` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_groups`
 --
 
@@ -268,6 +270,12 @@ INSERT INTO `user_groups` (`id`, `group_name`, `group_access_link`, `published`,
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `action_types`
+--
+ALTER TABLE `action_types`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -306,23 +314,11 @@ ALTER TABLE `product_lists`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usergroup_access_mapping`
---
-ALTER TABLE `usergroup_access_mapping`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- Indexes for table `user_access`
---
-ALTER TABLE `user_access`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_groups`
@@ -335,6 +331,12 @@ ALTER TABLE `user_groups`
 --
 
 --
+-- AUTO_INCREMENT for table `action_types`
+--
+ALTER TABLE `action_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -344,7 +346,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `party_lists`
@@ -362,25 +364,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `product_lists`
 --
 ALTER TABLE `product_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `usergroup_access_mapping`
---
-ALTER TABLE `usergroup_access_mapping`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `user_access`
---
-ALTER TABLE `user_access`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_groups`
