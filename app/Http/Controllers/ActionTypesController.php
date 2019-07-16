@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 use App\ActionType;
@@ -30,7 +31,10 @@ class ActionTypesController extends Controller
     {
         $action_types = ActionType::withTrashed()->orderBy('created_at', 'desc')->paginate(10);
         //$action_types = ActionType::onlyTrashed()->orderBy('created_at', 'desc')->paginate(10);
-        return view('action_types.index')->with('action_types', $action_types);
+        return response()->json([
+            'action_types' => $action_types,
+        ], 200);
+        //return view('action_types.index')->with('action_types', $action_types);
     }
 
     /**

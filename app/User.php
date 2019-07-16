@@ -48,5 +48,10 @@ class User extends Authenticatable
     public function tasks()
     {
         return $this->hasMany(Task::class, 'user_id');
+    }
+
+    public function actiontype()
+    {
+        return $this->hasMany('App\ActionType');
     }    
 }

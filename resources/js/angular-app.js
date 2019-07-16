@@ -109,3 +109,28 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
         }
     };
 }]);
+
+
+app.controller('ActionTypesController', ['$scope', '$http', function ($scope, $http) {
+    $scope.action_types = [];
+    //console.log("Hello World from controller");
+    // List action_types
+    $scope.loadActionTypes = function () {
+
+        $http.get('/action_types')
+            .then(function success(e) {
+                //console.log("Hello World from controller123123");
+                $scope.action_types = e.data.action_types;
+            });
+    };
+    $scope.loadActionTypes();
+
+}]);
+
+app.config(function($routeProvider) {
+ $routeProvider
+ .when('/action_types', {
+ controller:'ActionTypesController',
+ templateUrl:'/action_types/index.blade.php',
+ })
+});
