@@ -26,6 +26,7 @@ Route::resources([
     'party_lists' => 'PartyListsController',
     'actions' => 'ActionsController',
     'action_types' => 'ActionTypesController',
+    'tasks' => 'TasksController',
 ]);
 Auth::routes();
 

@@ -43,5 +43,10 @@ class User extends Authenticatable
 
     public function product(){
         return $this->hasMany('App\ProductList');
-    }   
+    }
+    
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'user_id');
+    }    
 }
