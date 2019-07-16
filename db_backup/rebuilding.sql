@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2019 at 09:04 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Jul 16, 2019 at 12:23 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,10 +42,10 @@ CREATE TABLE `action_types` (
 --
 
 INSERT INTO `action_types` (`id`, `action_type`, `published`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, 'Show', 1, '2019-07-05 12:59:11', '2019-07-06 11:53:54', '2019-07-06 11:53:54'),
-(6, 'Add', 1, '2019-07-05 12:59:27', '2019-07-06 05:29:00', NULL),
-(7, 'Edit', 1, '2019-07-05 12:59:48', '2019-07-06 11:53:36', NULL),
-(8, 'Delete', 1, '2019-07-05 12:59:58', '2019-07-06 05:31:32', NULL);
+(5, 'Show', 1, '2019-07-05 12:59:11', '2019-07-10 00:51:11', NULL),
+(6, 'Add', 1, '2019-07-05 12:59:27', '2019-07-10 00:51:06', '2019-07-10 00:51:06'),
+(7, 'Edit', 1, '2019-07-05 12:59:48', '2019-07-15 04:20:00', NULL),
+(8, 'Delete', 1, '2019-07-05 12:59:58', '2019-07-15 05:02:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2019_07_01_124654_create_party_lists_table', 8),
 (11, '2019_07_05_170401_create_actions_table', 9),
 (12, '2019_07_05_171308_create_action_types_table', 10),
-(13, '2019_07_05_193055_add_deleted_at_column_to_action_types', 11);
+(13, '2019_07_05_193055_add_deleted_at_column_to_action_types', 11),
+(14, '2019_07_15_121436_create_tasks_table', 12),
+(15, '2019_07_16_061017_create_tasks_table', 13);
 
 -- --------------------------------------------------------
 
@@ -213,6 +215,34 @@ INSERT INTO `product_lists` (`id`, `category_id`, `product_name`, `product_numbe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tasks`
+--
+
+CREATE TABLE `tasks` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`id`, `user_id`, `name`, `description`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Tets', 'Test', '2019-07-16 03:13:03', NULL, '2019-07-16 03:13:03'),
+(2, 1, 'Test 2', 'Trest2', NULL, '2019-07-16 02:22:14', '2019-07-16 04:17:05'),
+(3, 1, 'Test 100', 'Test 1', NULL, '2019-07-16 03:17:04', '2019-07-16 03:17:13'),
+(4, 1, 'Test n123', 'Test n', '2019-07-16 03:18:57', '2019-07-16 03:18:28', '2019-07-16 03:18:57'),
+(5, 1, 'newline', 'testwq3e242314', '2019-07-16 03:36:17', '2019-07-16 03:36:01', '2019-07-16 03:36:17'),
+(6, 1, 'Test 3', 'Test 3', NULL, '2019-07-16 04:17:21', '2019-07-16 04:17:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -314,6 +344,12 @@ ALTER TABLE `product_lists`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -346,7 +382,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `party_lists`
@@ -365,6 +401,12 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `product_lists`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tasks`
+--
+ALTER TABLE `tasks`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
