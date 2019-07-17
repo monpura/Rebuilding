@@ -23,10 +23,10 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
             .then(function success(e) {
             	//console.log("Hello World from controller123123");
                 $scope.tasks = e.data.tasks;
+                //console.log($scope.tasks);
             });
     };
     $scope.loadTasks();
-
 
 
 	$scope.errors = [];
@@ -73,7 +73,6 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
     };   
 
 
-
      $scope.edit_task = {};
     // initialize update action
     $scope.initEdit = function (index) {
@@ -95,8 +94,7 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
         });
     };
 
-
-// delete the given task
+	// delete the given task
     $scope.deleteTask = function (index) {
 
         var conf = confirm("Do you really want to delete this task?");
@@ -111,7 +109,8 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
 }]);
 
 
-app.controller('ActionTypesController', ['$scope', '$http', function ($scope, $http) {
+
+app.controller('ActionTypeController', ['$scope', '$http', function ($scope, $http) {
     $scope.action_types = [];
     //console.log("Hello World from controller");
     // List action_types
@@ -121,16 +120,84 @@ app.controller('ActionTypesController', ['$scope', '$http', function ($scope, $h
             .then(function success(e) {
                 //console.log("Hello World from controller123123");
                 $scope.action_types = e.data.action_types;
+                //console.log($scope.action_types);
             });
     };
     $scope.loadActionTypes();
 
+
+    $scope.errors = [];
+
+    $scope.action_type = {
+        action_type: '',
+        published: ''
+    };
+    $scope.initActionType = function () {
+        $scope.resetForm();
+        $("#add_new_action_type").modal('show');
+    };
+
+    // Add new ActionType
+    $scope.addActionType = function () {
+        $http.post('/action_types', {
+            action_type: $scope.action_type.action_type,
+            published: $scope.action_type.published
+        }).then(function success(e) {
+            $scope.resetForm();
+            $scope.action_types.push(e.data.action_type);
+            $("#add_new_action_type").modal('hide');
+
+        }, function error(error) {
+            $scope.recordErrors(error);
+        });
+    };
+
+    $scope.recordErrors = function (error) {
+        $scope.errors = [];
+        if (error.data.errors.action_type) {
+            $scope.errors.push(error.data.errors.action_type[0]);
+        }
+    };
+
+    $scope.resetForm = function () {
+        $scope.action_type.action_type = '';
+        $scope.action_type.published = '';
+        $scope.errors = [];
+    };   
+
+
+     $scope.edit_action_type = {};
+    // initialize update action
+    $scope.initEditActionType = function (index) {
+        $scope.errors = [];
+        $scope.edit_action_type = $scope.action_types[index];
+        $("#edit_action_type").modal('show');
+    };
+
+    // update the given ActionType
+    $scope.updateActionType = function () {
+        $http.patch('/action_types/' + $scope.edit_action_type.id, {
+            action_type: $scope.edit_action_type.action_type,
+            published: $scope.edit_action_type.published
+        }).then(function success(e) {
+            $scope.errors = [];
+            $("#edit_action_type").modal('hide');
+        }, function error(error) {
+            $scope.recordErrors(error);
+        });
+    };
+
+    // delete the given ActionType
+    $scope.deleteActionType = function (index) {
+
+        var conf = confirm("Do you really want to delete this ActionType?");
+
+        if (conf === true) {
+            $http.delete('/action_types/' + $scope.action_types[index].id)
+                .then(function success(e) {
+                    $scope.action_types.splice(index, 1);
+                });
+        }
+    };
 }]);
 
-app.config(function($routeProvider) {
- $routeProvider
- .when('/action_types', {
- controller:'ActionTypesController',
- templateUrl:'/action_types/index.blade.php',
- })
-});

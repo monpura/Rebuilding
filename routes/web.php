@@ -31,3 +31,9 @@ Route::resources([
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+
+	// Route::get('/action_types', function() {
+	//     return view('/admin/action_type/index');
+	// });
+

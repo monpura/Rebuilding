@@ -29,14 +29,14 @@ class ActionTypesController extends Controller
      */
     public function index()
     {
-        $action_types = ActionType::withTrashed()->orderBy('created_at', 'desc')->paginate(10);
+        $action_types = ActionType::all();
+        //$action_types = ActionType::withTrashed()->orderBy('created_at', 'desc')->paginate(10);
         //$action_types = ActionType::onlyTrashed()->orderBy('created_at', 'desc')->paginate(10);
         return response()->json([
             'action_types' => $action_types,
         ], 200);
         //return view('action_types.index')->with('action_types', $action_types);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +44,7 @@ class ActionTypesController extends Controller
      */
     public function create()
     {
-        return view('action_types.create');
+        //
     }
 
     /**
@@ -73,7 +73,10 @@ class ActionTypesController extends Controller
         }
         $action_type->save();
 
-        return redirect('/action_types')->with('sucess', 'Action Type Added');
+        return response()->json([
+            'action_types'    => $action_types,
+            'message' => 'Success'
+        ], 200);
     }
 
     /**
@@ -84,9 +87,7 @@ class ActionTypesController extends Controller
      */
     public function show($id)
     {
-        $action_type = ActionType::find($id);
-
-        return view('action_types.show')->with('action_type', $action_type);
+        //
     }
 
     /**
@@ -97,9 +98,7 @@ class ActionTypesController extends Controller
      */
     public function edit($id)
     {
-        $action_type = ActionType::find($id);
-
-        return view('action_types.edit')->with('action_type', $action_type);
+        //
     }
 
     /**
@@ -129,7 +128,9 @@ class ActionTypesController extends Controller
         }
         $action_type->save();
 
-        return redirect('/action_types')->with('sucess', 'Action Type Updated');
+        return response()->json([
+            'message' => 'Task updated successfully!'
+        ], 200);
     }
 
     /**
@@ -151,7 +152,9 @@ class ActionTypesController extends Controller
         
         $action_type->delete();
 
-        return redirect('/action_types')->with('success', 'Action Type Removed');
+        return response()->json([
+            'message' => 'Task deleted successfully!'
+        ], 200);
     }
     
     public function bin(){
