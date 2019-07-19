@@ -73625,8 +73625,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\Works\xampp\htdocs\rebuilding\resources\js\angular-app.js */"./resources/js/angular-app.js");
-module.exports = __webpack_require__(/*! G:\Works\xampp\htdocs\rebuilding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\installed\xampp\htdocs\rebuilding\resources\js\angular-app.js */"./resources/js/angular-app.js");
+module.exports = __webpack_require__(/*! D:\installed\xampp\htdocs\rebuilding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

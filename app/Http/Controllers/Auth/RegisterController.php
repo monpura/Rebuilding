@@ -73,7 +73,6 @@ class RegisterController extends Controller
             'g_id' => 0,
             'daily_transaction_report' => 0,
             'published' => 0,
-            'deleted' => 0,
         ]);
     }
 }
