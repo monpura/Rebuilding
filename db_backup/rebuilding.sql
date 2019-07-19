@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2019 at 12:23 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jul 19, 2019 at 10:13 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -253,12 +253,11 @@ CREATE TABLE `users` (
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `g_id` int(11) NOT NULL,
+  `g_id` int(11) NOT NULL DEFAULT '0',
   `daily_transaction_report` tinyint(4) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `published` tinyint(4) NOT NULL,
-  `deleted` tinyint(4) NOT NULL,
+  `published` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -267,9 +266,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `g_id`, `daily_transaction_report`, `email_verified_at`, `remember_token`, `published`, `deleted`, `created_at`, `updated_at`) VALUES
-(1, 'Prasanta', 'Mondal', '', 'test@test.com', '$2y$10$wySyc10dCAGV0Y1GFlHIPuJT3SuAdlEDuy4M6YEn.pt2gpYjRrOiq', 0, 0, NULL, NULL, 0, 0, '2019-04-24 02:55:42', '2019-04-24 02:55:42'),
-(2, 'Test', '1', '', 'test1@test.com', '$2y$10$XxvmR5rP.CZwGTcwe0FV3e4Xfz6GlW9G3U/1UbpR2uUAVqIwdTgx2', 0, 0, NULL, NULL, 0, 0, '2019-04-24 05:45:39', '2019-04-24 05:45:39');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `g_id`, `daily_transaction_report`, `email_verified_at`, `remember_token`, `published`, `created_at`, `updated_at`) VALUES
+(1, 'Prasanta', 'Mondal', '', 'test@test.com', '$2y$10$wySyc10dCAGV0Y1GFlHIPuJT3SuAdlEDuy4M6YEn.pt2gpYjRrOiq', 0, 0, NULL, NULL, 0, '2019-04-24 02:55:42', '2019-04-24 02:55:42'),
+(2, 'Test', '1', '', 'test1@test.com', '$2y$10$XxvmR5rP.CZwGTcwe0FV3e4Xfz6GlW9G3U/1UbpR2uUAVqIwdTgx2', 0, 0, NULL, NULL, 0, '2019-04-24 05:45:39', '2019-04-24 05:45:39'),
+(3, 'Test', 'Man', 'username', 'test@email.com', '$2y$10$hshCGONyhbbfXnbZG6OuFel56C0tZnxeMln2b9anAjHVZZcS5IGja', 0, 0, NULL, NULL, 0, '2019-07-19 12:50:56', '2019-07-19 12:50:56'),
+(4, 'Test', 'Man', 'username', 'test@emailapi.com', '$2y$10$r1OtvCRXetIUYtsM7UMwBe0CRuy01xBXZ.f9CXxxQVM4JK7XDP00e', 0, 0, NULL, NULL, 0, '2019-07-19 12:52:24', '2019-07-19 12:52:24');
 
 -- --------------------------------------------------------
 
@@ -412,7 +413,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_groups`
