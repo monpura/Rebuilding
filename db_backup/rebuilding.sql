@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2019 at 10:13 PM
+-- Generation Time: Jul 22, 2019 at 07:39 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -102,7 +102,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2019_07_05_171308_create_action_types_table', 10),
 (13, '2019_07_05_193055_add_deleted_at_column_to_action_types', 11),
 (14, '2019_07_15_121436_create_tasks_table', 12),
-(15, '2019_07_16_061017_create_tasks_table', 13);
+(15, '2019_07_16_061017_create_tasks_table', 13),
+(16, '2019_07_20_093651_add_deleted_at_column_to_users', 14),
+(17, '2019_07_20_094426_add_deleted_at_column_to_users', 15);
 
 -- --------------------------------------------------------
 
@@ -259,18 +261,17 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `published` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `g_id`, `daily_transaction_report`, `email_verified_at`, `remember_token`, `published`, `created_at`, `updated_at`) VALUES
-(1, 'Prasanta', 'Mondal', '', 'test@test.com', '$2y$10$wySyc10dCAGV0Y1GFlHIPuJT3SuAdlEDuy4M6YEn.pt2gpYjRrOiq', 0, 0, NULL, NULL, 0, '2019-04-24 02:55:42', '2019-04-24 02:55:42'),
-(2, 'Test', '1', '', 'test1@test.com', '$2y$10$XxvmR5rP.CZwGTcwe0FV3e4Xfz6GlW9G3U/1UbpR2uUAVqIwdTgx2', 0, 0, NULL, NULL, 0, '2019-04-24 05:45:39', '2019-04-24 05:45:39'),
-(3, 'Test', 'Man', 'username', 'test@email.com', '$2y$10$hshCGONyhbbfXnbZG6OuFel56C0tZnxeMln2b9anAjHVZZcS5IGja', 0, 0, NULL, NULL, 0, '2019-07-19 12:50:56', '2019-07-19 12:50:56'),
-(4, 'Test', 'Man', 'username', 'test@emailapi.com', '$2y$10$r1OtvCRXetIUYtsM7UMwBe0CRuy01xBXZ.f9CXxxQVM4JK7XDP00e', 0, 0, NULL, NULL, 0, '2019-07-19 12:52:24', '2019-07-19 12:52:24');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `g_id`, `daily_transaction_report`, `email_verified_at`, `remember_token`, `published`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Prasanta', 'Mondal', '', 'test@test.com', '$2y$10$wySyc10dCAGV0Y1GFlHIPuJT3SuAdlEDuy4M6YEn.pt2gpYjRrOiq', 0, 0, NULL, NULL, 0, '2019-04-24 02:55:42', '2019-04-24 02:55:42', NULL),
+(2, 'Test', '1', '', 'test1@test.com', '$2y$10$XxvmR5rP.CZwGTcwe0FV3e4Xfz6GlW9G3U/1UbpR2uUAVqIwdTgx2', 0, 0, NULL, NULL, 0, '2019-04-24 05:45:39', '2019-04-24 05:45:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -383,7 +384,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `party_lists`
@@ -413,7 +414,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_groups`
