@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "44b567e9-776b-4b8f-a852-33dc9fa724e9",
+		"name": "Rebuilding",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UserAuthorization",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"R00taccess\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/login",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@emailapi.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/register",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9yZWJ1aWxkaW5nLnByYVwvYXBpXC9sb2dpbiIsImlhdCI6MTU2MzU2Nzk4NSwiZXhwIjoxNTYzNTcxNTg1LCJuYmYiOjE1NjM1Njc5ODUsImp0aSI6ImlrOWJIcFRQQmFoUzQwZE8iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.dBUOzRxLhKBQ4OH5wH40DmkmHgC9Rj7lgvJBEkSI8n8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{rurl}}/api/logout",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Open",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/open",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"open"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Authorization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9yZWJ1aWxkaW5nLnByYVwvYXBpXC9sb2dpbiIsImlhdCI6MTU2MzU2NDc4OSwiZXhwIjoxNTYzNTY4Mzg5LCJuYmYiOjE1NjM1NjQ3ODksImp0aSI6IlkyYkhFbTFOeEhJT1RkOHEiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.-K2ELCSNcCdQaJkmS1Zh7xJaUfQ9kfKyxF3gagySSts"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/open",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"open"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9yZWJ1aWxkaW5nLnByYVwvYXBpXC9sb2dpbiIsImlhdCI6MTU2MzU2NDc4OSwiZXhwIjoxNTYzNTY4Mzg5LCJuYmYiOjE1NjM1NjQ3ODksImp0aSI6IlkyYkhFbTFOeEhJT1RkOHEiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.-K2ELCSNcCdQaJkmS1Zh7xJaUfQ9kfKyxF3gagySSts"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/user",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalide token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer thistokeniswrong"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/user",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Closed",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/closed",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"closed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "782e1ee3-9dd2-4d80-9797-51f86e43eb19",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "710b7c71-4d58-4661-bf75-1dfa06380790",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
