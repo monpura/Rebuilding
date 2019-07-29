@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "557d9322-2beb-45f7-a3b5-f6d2a4f25d95",
+		"_postman_id": "a58f10d5-64c6-4271-88f2-cb9229f82cd4",
 		"name": "Rebuilding",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -201,7 +201,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{rurl}}/api/open",
@@ -240,7 +240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{rurl}}/api/open",
@@ -284,7 +284,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{rurl}}/api/user",
@@ -328,7 +328,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{rurl}}/api/user",
@@ -362,7 +362,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{rurl}}/api/closed",
@@ -516,7 +516,10 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{rurl}}/api/posts",
 							"host": [
@@ -545,7 +548,10 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{rurl}}/api/posts/self",
 							"host": [
@@ -721,7 +727,10 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{rurl}}/api/action_types",
 							"host": [
@@ -730,6 +739,73 @@
 							"path": [
 								"api",
 								"action_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{rurl}}/api/action_types/bin",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"action_types",
+								"bin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BinRestore",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{rurl}}/api/action_types/bin/{{atid}}",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"action_types",
+								"bin",
+								"{{atid}}"
 							]
 						}
 					},
@@ -757,7 +833,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"action_type\": \"Show01\",\n    \"published\": 1\n}"
+							"raw": "{\n\t\"action_type\": \"Show01121\",\n    \"published\": 1\n}"
 						},
 						"url": {
 							"raw": "{{rurl}}/api/action_types/create",
@@ -798,15 +874,54 @@
 							"raw": "{\n\t\"action_type\": \"Show2\",\n    \"published\": 1\n}"
 						},
 						"url": {
-							"raw": "{{rurl}}/api/action_types/{13}/edit",
+							"raw": "{{rurl}}/api/action_types/{{atid}/edit",
 							"host": [
 								"{{rurl}}"
 							],
 							"path": [
 								"api",
 								"action_types",
-								"{13}",
+								"{{atid}",
 								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{rurl}}/api/action_types/{{atid}}/delete",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"action_types",
+								"{{atid}}",
+								"delete"
 							]
 						}
 					},
