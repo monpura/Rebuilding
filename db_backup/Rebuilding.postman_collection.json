@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "44b567e9-776b-4b8f-a852-33dc9fa724e9",
+		"_postman_id": "557d9322-2beb-45f7-a3b5-f6d2a4f25d95",
 		"name": "Rebuilding",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -18,6 +18,42 @@
 								"type": "text/javascript",
 								"exec": [
 									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dc331df6-36ff-4f0a-96d3-f68ed38c8c59",
+								"type": "text/javascript",
+								"exec": [
+									"//Global variable declaration",
+									"var userToken; ",
+									"//var userSession; ",
+									"",
+									"pm.test(\"Your test name\", function () { ",
+									"",
+									"  //Local variable declarationvar sessid; ",
+									"  //var session_name; ",
+									"  var jsonUser = pm.response.json();",
+									"  ",
+									"  //console.log(\"Test Session Id\"); ",
+									"  //console.log(jsonUser.sessid); ",
+									"  //console.log(\"Test Session Name\"); ",
+									"  //console.log(jsonUser.session_name); ",
+									"  ",
+									"  console.log(\"Test Token\"); ",
+									"  userToken = jsonUser.token; ",
+									"  console.log(userToken); ",
+									"  //console.log(\"Test Session\"); ",
+									"  //userSession = jsonUser.session_name + \"=\" + jsonUser.sessid; ",
+									"  //console.log(userSession);",
+									"",
+									"}); ",
+									"  ",
+									"//Setting global variable to postman",
+									"//pm.globals.set('session', userSession); ",
+									"pm.globals.set('token', userToken);"
 								]
 							}
 						}
@@ -62,6 +98,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -101,13 +147,18 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9yZWJ1aWxkaW5nLnByYVwvYXBpXC9sb2dpbiIsImlhdCI6MTU2MzU2Nzk4NSwiZXhwIjoxNTYzNTcxNTg1LCJuYmYiOjE1NjM1Njc5ODUsImp0aSI6ImlrOWJIcFRQQmFoUzQwZE8iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.dBUOzRxLhKBQ4OH5wH40DmkmHgC9Rj7lgvJBEkSI8n8"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -263,13 +314,18 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer thistokeniswrong"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"firstname\": \"Test\",\n\t\"lastname\": \"Man\",\n\t\"username\": \"username\",\n\t\"email\": \"test@email.com\",\n\t\"password\": \"secret\",\n\t\"password_confirmation\": \"secret\"\n}"
@@ -320,6 +376,463 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ae06005f-900d-4ef7-aa74-afa44aa30dba",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "74718916-47b4-4bd2-87a1-579821c45bd0",
+								"type": "text/javascript",
+								"exec": [
+									"//Global variable declaration",
+									"var userToken; ",
+									"//var userSession; ",
+									"",
+									"pm.test(\"Your test name\", function () { ",
+									"",
+									"  //Local variable declarationvar sessid; ",
+									"  //var session_name; ",
+									"  var jsonUser = pm.response.json();",
+									"  ",
+									"  //console.log(\"Test Session Id\"); ",
+									"  //console.log(jsonUser.sessid); ",
+									"  //console.log(\"Test Session Name\"); ",
+									"  //console.log(jsonUser.session_name); ",
+									"  ",
+									"  console.log(\"Test Token\"); ",
+									"  userToken = jsonUser.token; ",
+									"  console.log(userToken); ",
+									"  //console.log(\"Test Session\"); ",
+									"  //userSession = jsonUser.session_name + \"=\" + jsonUser.sessid; ",
+									"  //console.log(userSession);",
+									"",
+									"}); ",
+									"  ",
+									"//Setting global variable to postman",
+									"//pm.globals.set('session', userSession); ",
+									"pm.globals.set('token', userToken);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"R00taccess\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/login",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{rurl}}/api/logout",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ShowAllPost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{rurl}}/api/posts",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ShowUserPost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{rurl}}/api/posts/self",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"self"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "80bcf8b7-9f4d-472d-8232-e7bdc52c4209",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3cac54c3-3ecf-420c-b9b2-0638691dd524",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ActionType",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ae06005f-900d-4ef7-aa74-afa44aa30dba",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "74718916-47b4-4bd2-87a1-579821c45bd0",
+								"type": "text/javascript",
+								"exec": [
+									"//Global variable declaration",
+									"var userToken; ",
+									"//var userSession; ",
+									"",
+									"pm.test(\"Your test name\", function () { ",
+									"",
+									"  //Local variable declarationvar sessid; ",
+									"  //var session_name; ",
+									"  var jsonUser = pm.response.json();",
+									"  ",
+									"  //console.log(\"Test Session Id\"); ",
+									"  //console.log(jsonUser.sessid); ",
+									"  //console.log(\"Test Session Name\"); ",
+									"  //console.log(jsonUser.session_name); ",
+									"  ",
+									"  console.log(\"Test Token\"); ",
+									"  userToken = jsonUser.token; ",
+									"  console.log(userToken); ",
+									"  //console.log(\"Test Session\"); ",
+									"  //userSession = jsonUser.session_name + \"=\" + jsonUser.sessid; ",
+									"  //console.log(userSession);",
+									"",
+									"}); ",
+									"  ",
+									"//Setting global variable to postman",
+									"//pm.globals.set('session', userSession); ",
+									"pm.globals.set('token', userToken);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"R00taccess\"\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/login",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8c00ac0d-a775-4faf-b278-ddaeff8a6389",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{rurl}}/api/logout",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ShowAllPost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{rurl}}/api/action_types",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"action_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"action_type\": \"Show01\",\n    \"published\": 1\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/action_types/create",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"action_types",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"action_type\": \"Show2\",\n    \"published\": 1\n}"
+						},
+						"url": {
+							"raw": "{{rurl}}/api/action_types/{13}/edit",
+							"host": [
+								"{{rurl}}"
+							],
+							"path": [
+								"api",
+								"action_types",
+								"{13}",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "80bcf8b7-9f4d-472d-8232-e7bdc52c4209",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3cac54c3-3ecf-420c-b9b2-0638691dd524",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}

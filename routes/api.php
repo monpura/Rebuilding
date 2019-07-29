@@ -13,17 +13,80 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::post('/login', [
+// 	'as' => 'login.login',
+// 	'uses'	=> 'Api\Auth\LoginController@login'
+// ]);
 
-Route::post('register', 'UserController@register');
-Route::post('login', 'UserController@authenticate');
-Route::get('open', 'DataController@open');
+Route::post('register', [
+	'as' => 'register.register',
+	'uses' => 'Api\Auth\UserController@register'
+]);
+
+Route::post('login', [
+	'as' => 'login.authenticate',
+	'uses' => 'Api\Auth\UserController@authenticate'
+]);
+
+Route::get('open', [
+	'as' => 'open.open',
+	'uses' => 'Api\DataController@open'
+]);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('user', 'UserController@getAuthenticatedUser');
-    Route::get('closed', 'DataController@closed');
-    Route::get('logout', 'UserController@logout')->name('api.jwt.logout');
+    Route::get('user', [
+		'as' => 'user.getAuthenticatedUser',
+		'uses' => 'Api\Auth\UserController@getAuthenticatedUser'
+	]);
+
+    Route::get('closed', [
+		'as' => 'closed.closed',
+		'uses' => 'Api\DataController@closed'
+	]);
+
+    Route::get('logout', [
+		'as' => 'logout.logout',
+		'uses' => 'Api\Auth\UserController@logout'
+	])->name('api.jwt.logout');
 });
 
+Route::get('/posts', [
+	'as' => 'posts.all',
+	'uses' => 'Api\PostsController@all'
+]);
+
+Route::get('/posts/self', [
+	'as' => 'posts.self',
+	'uses' => 'Api\PostsController@self'
+]);
+
+// Router for Action Types
+Route::get('/action_types', [
+	'as' => 'action_types.index',
+	'uses' => 'Api\ActionTypesController@index'
+]);
+
+Route::post('/action_types/create', [
+	'as' => 'action_types.store',
+	'uses' => 'Api\ActionTypesController@store'
+]);
+
+Route::post('/action_types/{id}/edit', [
+	'as' => 'action_types.update',
+	'uses' => 'Api\ActionTypesController@update'
+]);
+
+Route::post('/action_types/{id}/delete', [
+	'as' => 'action_types.destroy',
+	'uses' => 'Api\ActionTypesController@destroy'
+]);
+
+Route::get('/action_types/bin', [
+	'as' => 'action_types.bin',
+	'uses' => 'Api\ActionTypesController@bin'
+]);
+
+Route::get('/action_types/bin/{id}', [
+	'as' => 'action_types.restore',
+	'uses' => 'Api\ActionTypesController@restore'
+]);
