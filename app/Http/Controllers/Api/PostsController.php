@@ -45,15 +45,15 @@ class PostsController extends Controller
         return Post::all();
     }
 
-    public function self()
-    {
-        //$posts = auth()->user()->posts;
+    // public function self()
+    // {
+    //     //$posts = auth()->user()->posts;
         
-        // To check user created the post
-        $user = this->authUser();
+    //     // To check user created the post
+    //     $user = this->authUser();
         
-        return $user->posts;
-    }
+    //     return $user->posts;
+    // }
 
     /**
      * Show the form for creating a new resource.

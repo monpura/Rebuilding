@@ -112,11 +112,11 @@ app.controller('TaskController', ['$scope', '$http', function ($scope, $http) {
 
 app.controller('ActionTypeController', ['$scope', '$http', function ($scope, $http) {
     $scope.action_types = [];
-    //console.log("Hello World from controller");
+    console.log("Hello World from controller");
     // List action_types
     $scope.loadActionTypes = function () {
 
-        $http.get('/action_types')
+        $http.get('api/action_types')
             .then(function success(e) {
                 //console.log("Hello World from controller123123");
                 $scope.action_types = e.data.action_types;
@@ -139,7 +139,7 @@ app.controller('ActionTypeController', ['$scope', '$http', function ($scope, $ht
 
     // Add new ActionType
     $scope.addActionType = function () {
-        $http.post('/action_types', {
+        $http.post('api/action_types', {
             action_type: $scope.action_type.action_type,
             published: $scope.action_type.published
         }).then(function success(e) {
@@ -176,7 +176,7 @@ app.controller('ActionTypeController', ['$scope', '$http', function ($scope, $ht
 
     // update the given ActionType
     $scope.updateActionType = function () {
-        $http.patch('/action_types/' + $scope.edit_action_type.id, {
+        $http.patch('api/action_types/' + $scope.edit_action_type.id, {
             action_type: $scope.edit_action_type.action_type,
             published: $scope.edit_action_type.published
         }).then(function success(e) {
@@ -193,7 +193,7 @@ app.controller('ActionTypeController', ['$scope', '$http', function ($scope, $ht
         var conf = confirm("Do you really want to delete this ActionType?");
 
         if (conf === true) {
-            $http.delete('/action_types/' + $scope.action_types[index].id)
+            $http.delete('api/action_types/' + $scope.action_types[index].id)
                 .then(function success(e) {
                     $scope.action_types.splice(index, 1);
                 });

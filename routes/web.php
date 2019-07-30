@@ -15,25 +15,26 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 
-Route::get('/action_types/bin', 'ActionTypesController@bin');
-Route::get('/action_types/bin/{id}', 'ActionTypesController@restore');
+// Route::get('/action_types/bin', 'ActionTypesController@bin');
+// Route::get('/action_types/bin/{id}', 'ActionTypesController@restore');
 
 Route::resources([
     'posts' => 'PostsController',
-    'product_lists' => 'ProductListsController',
-    'user_groups' => 'UserGroupsController',
-    'categories' => 'CategoriesController',
-    'party_lists' => 'PartyListsController',
-    'actions' => 'ActionsController',
-    'action_types' => 'ActionTypesController',
-    'tasks' => 'TasksController',
+    // 'product_lists' => 'ProductListsController',
+    // 'user_groups' => 'UserGroupsController',
+    // 'categories' => 'CategoriesController',
+    // 'party_lists' => 'PartyListsController',
+    // 'actions' => 'ActionsController',
+    // 'action_types' => 'ActionTypesController',
+     'tasks' => 'TasksController',
 ]);
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
 
 
-	// Route::get('/action_types', function() {
-	//     return view('/admin/action_type/index');
-	// });
+// Route::get('/action_types', function() {
+//     return view('/action_types/index');
+// });
 
+Route::view('/action-types', 'action_types.action_types_dashboard');

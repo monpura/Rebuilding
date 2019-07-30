@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     <a class="btn btn-primary" href="/posts/create">Create Post</a> <a class="btn btn-primary" href="/product_lists">Product Manager</a> <a class="btn btn-primary" href="/user_groups">User Manager</a> <a class="btn btn-primary" href="/categories">Product Category</a> <a class="btn btn-primary" href="/party_lists">Party Manager</a><br><br>
-                    <a class="btn btn-primary" href="/action_types">Action Types Manager</a>
+                    <a class="btn btn-primary" href="/action-types">Action Types Manager</a>
                     <h3>Your Blog Posts</h3>
                     @if(count($posts) > 0)
                         <table class="table table-striped">
